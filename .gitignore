@@ -1,0 +1,10 @@
+debug/
+release/
+Makefile
+Makefile.Release
+Makefile.Debug
+object_script.*
+*.pro.user*
+*.ini
+ui_*.h
+*.syx
