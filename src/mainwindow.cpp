@@ -14,7 +14,6 @@ MainWindow::MainWindow(QWidget *parent)
 	QList<QWidget*> widgets;
 
 	auto *devicePanel = new DevicePanel();
-	widgets.append(devicePanel);
 	ui->tabWidget->addTab(devicePanel, tr("Devices"));
 
 	auto *instrumentPanel = new InstrumentPanel();
@@ -23,8 +22,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 	for (QWidget *& widget: widgets)
 	{
-		if (widget == devicePanel) continue;
-
 		connect(devicePanel, SIGNAL(inputChanged(MIDIInput*)), widget, SLOT(setInputDevice(MIDIInput*)));
 		connect(devicePanel, SIGNAL(outputChanged(MIDIOutput*)), widget, SLOT(setOutputDevice(MIDIOutput*)));
 	}
