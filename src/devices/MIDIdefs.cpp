@@ -59,9 +59,9 @@ static const StringMap controlNames =
 	{78, "Sound control 9"},
 	{79, "Sound control 10"},
 	{80, "Button 1 (on/off)"},
-	{81, "Button 1 (on/off)"},
-	{82, "Button 1 (on/off)"},
-	{83, "Button 1 (on/off)"},
+	{81, "Button 2 (on/off)"},
+	{82, "Button 3 (on/off)"},
+	{83, "Button 4 (on/off)"},
 
 	{91, "Reverb/delay level"},
 	{92, "Tremolo level"},
