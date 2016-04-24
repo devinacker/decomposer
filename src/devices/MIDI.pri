@@ -3,23 +3,37 @@
 #
 
 SOURCES += \
-    src/devices/MIDIdefs.cpp \
-    src/devices/MIDIoutput.cpp
+    $$PWD/MIDIdefs.cpp \
+    $$PWD/MIDIoutput.cpp
 
 HEADERS += \
-    src/devices/MIDIinput.h \
-    src/devices/MIDIoutput.h \
-    src/devices/MIDIdevice.h \
-    src/devices/MIDIdefs.h
+    $$PWD/MIDIinput.h \
+    $$PWD/MIDIoutput.h \
+    $$PWD/MIDIdevice.h \
+    $$PWD/MIDIdefs.h
 
 win32 {
+    message(building with WinMM)
     QMAKE_LIBS += -lwinmm
 
     SOURCES += \
-        src/devices/MIDIinput_winmm.cpp \
-        src/devices/MIDIoutput_winmm.cpp
+        $$PWD/MIDIinput_winmm.cpp \
+        $$PWD/MIDIoutput_winmm.cpp
 }
 
-!win32 {
+else:unix:!macx {
+    message(building with ALSA)
+    QMAKE_LIBS += -lasound
+
+    SOURCES +=  \
+        $$PWD/MIDIinput_alsa.cpp \
+        $$PWD/MIDIoutput_alsa.cpp \
+        $$PWD/alsa.cpp
+
+    HEADERS +=  \
+        $$PWD/alsa.h
+}
+
+else {
     error(MIDI device support not implemented for this platform)
 }
